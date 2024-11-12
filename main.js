@@ -15,8 +15,10 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'), // __dirname을 사용하여 preload 스크립트의 절대 경로 설정
       contextIsolation: true,
-      enableRemoteModule: true, // 필요한 경우
-      nodeIntegration: true     // 필요한 경우
+      enableRemoteModule: true,
+      nodeIntegration: true,
+      webSecurity: false, // 보안 해제
+      sandbox: true, // 샌드박스 활성화
     }
   });
 
