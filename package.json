@@ -26,6 +26,7 @@
   "author": "Bedrock",
   "license": "ISC",
   "build": {
+    "compression": "maximum",
     "appId": "com.studiouvu.bedrock",
     "productName": "Bedrock",
     "files": [
