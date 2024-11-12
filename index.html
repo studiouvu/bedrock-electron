@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>Bedrock</title>
@@ -10,6 +11,7 @@
       overflow: hidden;
       font-family: Arial, sans-serif;
     }
+
     /* 드래그 가능한 상단 바 */
     #titlebar {
       height: 30px;
@@ -18,11 +20,14 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      -webkit-app-region: drag; /* 드래그 가능한 영역 설정 */
+      -webkit-app-region: drag;
+      /* 드래그 가능한 영역 설정 */
     }
+
     /* 창 제어 버튼 */
     #titlebar button {
-      -webkit-app-region: no-drag; /* 버튼은 드래그 불가 */
+      -webkit-app-region: no-drag;
+      /* 버튼은 드래그 불가 */
       background: none;
       border: none;
       color: white;
@@ -30,22 +35,60 @@
       cursor: pointer;
       font-size: 14px;
     }
+
     #titlebar button:hover {
       background-color: rgba(255, 255, 255, 0.1);
     }
+
     /* 웹사이트 표시 영역 */
     #content {
       width: 100%;
-      height: calc(100vh - 30px); /* 상단 바 높이를 제외한 나머지 공간 */
+      height: calc(100vh - 30px);
+      /* 상단 바 높이를 제외한 나머지 공간 */
       background-color: #0f0f0f;
     }
+
     iframe {
       width: 100%;
       height: 100%;
       border: none;
     }
+
+    /* 로딩 아이콘 스타일 */
+    #loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fade 2s infinite;
+      /* 깜빡이는 애니메이션 추가 */
+    }
+
+    #loader.hidden {
+      display: none;
+      /* iframe이 로드되면 숨김 */
+    }
+
+    /* 깜빡거리는 애니메이션 정의 */
+    @keyframes fade {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
+    }
   </style>
 </head>
+
 <body>
   <div id="titlebar">
     <button id="minimize">—</button>
@@ -53,9 +96,23 @@
     <button id="close">✕</button>
   </div>
   <div id="content">
+    <div id="loader">
+      <img id="loader-icon" src="https://bedrock.es/favicon.png" style="max-width: 50px; max-height: 50px;" alt="Loading Icon"> <!-- 아이콘의 src는 JS에서 설정 -->
+    </div>
+    <!-- 로딩 아이콘 -->
     <iframe id="webview"></iframe>
   </div>
 
   <script src="renderer.js"></script>
+  <script>
+    // iframe 로드 이벤트 처리
+    const iframe = document.getElementById('webview');
+    const loader = document.getElementById('loader');
+
+    iframe.addEventListener('load', () => {
+      loader.classList.add('hidden'); // iframe이 로드되면 로딩 아이콘 숨김
+    });
+  </script>
 </body>
+
 </html>

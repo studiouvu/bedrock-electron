@@ -24,9 +24,9 @@ function createWindow() {
   mainWindow.loadFile('index.html');
 
   // 개발자 도구 자동 열기
-  // if (process.env.NODE_ENV === 'development') {
-  mainWindow.webContents.openDevTools();
-  // }
+  if (process.env.NODE_ENV === 'development') {
+    mainWindow.webContents.openDevTools();
+  }
 
   // 메뉴 바 제거
   Menu.setApplicationMenu(null);

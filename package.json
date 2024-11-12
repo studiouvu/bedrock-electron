@@ -1,6 +1,6 @@
 {
   "name": "bedrock-electron",
-  "version": "1.0.0",
+  "version": "0.4.0",
   "description": "Electron으로 만든 간단한 웹앱",
   "main": "main.js",
   "files": [
@@ -10,6 +10,13 @@
     "start": "electron .",
     "build": "electron-builder"
   },
+  "extraResources": [
+    {
+      "from": "build",
+      "to": "build",
+      "filter": ["**/*"]
+    }
+  ],
   "devDependencies": {
     "electron": "^33.2.0",
     "electron-builder": "^25.1.8",
@@ -33,6 +40,13 @@
       "target": [
         "nsis"
       ]
-    }
+    },
+    "extraResources": [
+      {
+        "from": "build",
+        "to": "build",
+        "filter": ["**/*"]
+      }
+    ]
   }
 }

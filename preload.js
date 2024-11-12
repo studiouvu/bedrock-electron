@@ -9,7 +9,7 @@ contextBridge.exposeInMainWorld('api', {
       localStorage.setItem('deviceId', deviceId);
     }
     return deviceId;
-  }
+  },
 });
 
 function generateUUID() {
