@@ -1,0 +1,38 @@
+{
+  "name": "bedrock-electron",
+  "version": "1.0.0",
+  "description": "Electron으로 만든 간단한 웹앱",
+  "main": "main.js",
+  "files": [
+    "**/*"
+  ],
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "electron-store": "^10.0.0",
+    "uuid": "^11.0.3"
+  },
+  "author": "Bedrock",
+  "license": "ISC",
+  "build": {
+    "appId": "com.studiouvu.bedrock",
+    "productName": "Bedrock",
+    "files": [
+      "**/*",
+      "preload.js"
+    ],
+    "directories": {
+      "buildResources": "build"
+    },
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        "nsis"
+      ]
+    }
+  }
+}
